@@ -1,0 +1,33 @@
+<?php
+/**
+* ImageProcessor class - class for image processing 
+*
+* @version 1.0
+*/
+class ImageProcessor
+{
+	/**
+	* Creates image file in the article folder from out address
+	* @param int $articleId article identifier
+	* @param int $nmb the number of picture
+	* @param string $outFile the out address of chosen file
+	* @return string
+	*/	
+	static public function MakeLocalFile($articleId, $nmb, $outFile) 
+	{
+		
+	}
+	
+	/**
+	* Creates image file in the article folder from binary data
+	* @param int $articleId article identifier
+	* @param int $nmb the number of picture
+	* @param string $imageData binary data of picture
+	* @return string
+	*/	
+	static public function MakeLocalFileFromData($articleId, $nmb, $imageData) 
+	{
+		
+	}
+}
+?>

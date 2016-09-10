@@ -1,0 +1,19 @@
+<?php
+/**
+* PictureError class - 
+*
+* @version 1.0
+*/
+class PictureError
+{
+	/**
+	* @var int $ 
+	*/	
+	public $;
+	
+	/**
+	* @var string $
+	*/	
+	public $;
+}
+?>
