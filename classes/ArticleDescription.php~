@@ -7,7 +7,7 @@
 class ArticleDescription
 {
 	/**
-	* @var int $id article identifier
+	* @var int $id article identificator
 	*/	
 	public $id;
 	
