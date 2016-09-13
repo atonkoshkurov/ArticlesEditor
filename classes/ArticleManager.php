@@ -6,10 +6,20 @@
 */
 Class ArticleManager
 {
+	private $dbname;
+	private $tablename;
+	private $login;
+	private $psw;
+	
+	function __construct()
+	{
+		
+	}
+	
 	/**
 	* Adds (register only, without content) new article 
 	* @param string $title
-	* @return void
+	* @return int
 	*/	
 	public function Add($title) 
 	{
