@@ -6,10 +6,13 @@
 */
 Class ArticleManager
 {
+	private $dbtype;
 	private $dbname;
 	private $tablename;
 	private $login;
 	private $psw;
+	
+	const DB_CONNECTION_SETTINGS_FILE = 'dbconnection.ini';
 	
 	function __construct()
 	{
