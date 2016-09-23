@@ -7,12 +7,13 @@
 Class ArticleManager
 {
 	private $dbtype;
-	private $dbname;
-	private $tablename;
+	private $dbhost;
+	private $dbname;	
 	private $login;
 	private $psw;
 	
 	const DB_CONNECTION_SETTINGS_FILE = 'dbconnection.ini';
+	const TABLENAME = 'articles';
 	
 	function __construct()
 	{
