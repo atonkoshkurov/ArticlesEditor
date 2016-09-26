@@ -17,7 +17,7 @@ Class ArticleManager
 	
 	function __construct()
 	{
-		
+		FillConnectionParams();
 	}
 	
 	/**
@@ -88,6 +88,42 @@ Class ArticleManager
 	public function GetArticle($id) 
 	{
 	
+	}
+	
+	/**
+	* Initialize connection parameters from file 'dbconnection.ini' 
+	* @return void
+	*/
+	private function FillConnectionParams()
+	{
+		$dbarray = file(self::DB_CONNECTION_SETTINGS_FILE);
+		$SetAmount = count($dbarray);
+		$nm = 0;
+		while ($nm < $SetAmount)
+		{
+			$dbstring = $dbarray[$nm];
+			
+			$nm = $nm + 1;
+		}
+	}
+	
+	/**
+	* Reads string with database connection parameter description and saves it into separate variables "name" and "value" 
+	* @return array 
+	*/
+	private function DecomposeParameter($parameterString)
+	{
+		$par_name = '';
+		$par_value = '';
+		$pos = strpos($parameterString,':');
+		$posend = strpos($parameterString,';');
+		if ($pos > 0 && $posend > $pos)
+		{
+			$par_name = trim(substr($parameterString,0,$pos));
+			$par_value = trim(substr($parameterString,$pos+1,$posend - $pos - 1));
+		}
+		$result = ["name" => $par_name, "value" => $par_value];
+		return $result;
 	}
 }
 ?>
