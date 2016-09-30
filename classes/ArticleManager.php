@@ -101,7 +101,23 @@ Class ArticleManager
 		$nm = 0;
 		while ($nm < $SetAmount)
 		{
-			$dbstring = $dbarray[$nm];
+			$db_connection_param = DecomposeParameter($dbarray[$nm]);
+			if (strcmp($db_connection_param["name"],'DBEngine') === 0)
+			{
+				$dbtype = $db_connection_param["value"];
+			} elseif (strcmp($db_connection_param["name"],'DBHost') === 0)
+			{
+				$dbhost = $db_connection_param["value"];
+			} elseif (strcmp($db_connection_param["name"],'DBName') === 0)
+			{
+				$dbname = $db_connection_param["value"];
+			} elseif (strcmp($db_connection_param["name"],'DBUser') === 0)
+			{
+				$login = $db_connection_param["value"];
+			} elseif (strcmp($db_connection_param["name"],'DBPsw') === 0)
+			{
+				$psw = $db_connection_param["value"];
+			}
 			
 			$nm = $nm + 1;
 		}
@@ -111,7 +127,7 @@ Class ArticleManager
 	* Reads string with database connection parameter description and saves it into separate variables "name" and "value" 
 	* @return array 
 	*/
-	private function DecomposeParameter($parameterString)
+	protected function DecomposeParameter($parameterString)
 	{
 		$par_name = '';
 		$par_value = '';

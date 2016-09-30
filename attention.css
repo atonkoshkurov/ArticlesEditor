@@ -1,0 +1,10 @@
+.redtitle { color: #DC143C; font-weight: bold; font-family: Verdana }
+.aref {
+    border: 1px solid black;
+    padding: 7px; /* Поля вокруг текста */
+    background: #efecdf; 
+    font-weight: bold; 
+    font-size: 15; 
+    white-space: nowrap; /* Отменяем переносы текста */
+	font-family: Verdana
+   }
