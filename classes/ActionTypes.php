@@ -1,4 +1,6 @@
 <?php
+namespace ArticlesEdition
+{
 /**
 * ActionTypes class - Enumeration of page action types
 *
@@ -9,5 +11,6 @@ Abstract Class ActionTypes
 	const Add = 0;
 	const Edit = 1;
 	const Remove = 2;
+}
 }
 ?>

@@ -1,4 +1,6 @@
 <?php
+namespace ArticlesEdition
+{
 /**
 * ArticleManager class - class for operating with database table 'Articles'
 *
@@ -141,5 +143,6 @@ Class ArticleManager
 		$result = ["name" => $par_name, "value" => $par_value];
 		return $result;
 	}
+}
 }
 ?>

@@ -1,4 +1,6 @@
 <?php
+namespace ArticlesEdition
+{
 /**
 * ArticleViewer class - class for generating table containing a part of articles with current article on a page 
 *
@@ -16,5 +18,6 @@ class ArticleViewer
 	{
 		
 	}
+}
 }
 ?>

@@ -1,4 +1,6 @@
 <?php
+namespace ArticlesEdition
+{
 /**
 * ArticleTextGenerator class - class for generating article text from article body and backwards 
 *
@@ -29,5 +31,6 @@ class ArticleTextGenerator
 	{
 		
 	}
+}
 }
 ?>

@@ -1,4 +1,6 @@
 <?php
+namespace ArticlesEdition
+{
 /**
 * PictureError class - structure of picture error description
 *
@@ -15,5 +17,6 @@ class PictureError
 	* @var string $errorText error description
 	*/	
 	public $errorText;
+}
 }
 ?>

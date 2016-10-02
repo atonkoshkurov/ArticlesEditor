@@ -1,4 +1,6 @@
 <?php
+namespace ArticlesEdition
+{
 /**
 * Measures class - Enumeration of picture size measure units
 *
@@ -8,5 +10,6 @@ Abstract Class Measures
 {
 	const Px = 0;
 	const Perc = 1;
+}
 }
 ?>

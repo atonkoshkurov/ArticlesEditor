@@ -1,4 +1,6 @@
 <?php
+namespace ArticlesEdition
+{
 /**
 * PictureDescription class - structure of parameters describing a picture in article 
 *
@@ -25,5 +27,6 @@ class PictureDescription
 	* @var Measures $measure measure unit
 	*/
 	public $measure;
+}
 }
 ?>

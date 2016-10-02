@@ -1,4 +1,6 @@
 <?php
+namespace ArticlesEdition
+{
 /**
 * ArticlePage class - class for article page controlling
 *
@@ -147,5 +149,6 @@ Class ArticlePage
 		
 	}
 	
+}
 }
 ?>

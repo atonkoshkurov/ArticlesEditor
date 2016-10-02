@@ -1,4 +1,6 @@
 <?php
+namespace ArticlesEdition
+{
 /**
 * ErrorPage class - class for generating page with error messages if they occur 
 *
@@ -13,7 +15,11 @@ class ErrorPage
 	*/	
 	static public function ShowErrors($pictureErrors) 
 	{
+		$result = '';
 		
+		return $result;
 	}
 }
+}
+
 ?>

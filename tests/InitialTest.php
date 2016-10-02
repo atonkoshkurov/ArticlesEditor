@@ -1,15 +1,15 @@
 <?php
  
 //require_once('RemoteConnect.php');
- 
-class InitialTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase; 
+
+class InitialTest extends TestCase
 {
   public function setUp(){ }
   public function tearDown(){ }
  
   public function testPHPUnit()
   {
-    // проверка валидности соединения с сервером
     $arr = ["first" => 1, "second" => 2];
     $this->assertTrue(count($arr) == 2);
   }

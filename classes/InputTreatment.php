@@ -1,4 +1,6 @@
 <?php
+namespace ArticlesEdition
+{
 /**
 * InputTreatment class - parent class for creating common set of input parameters from post and session parameters
 * for each page a child class must be made with its own set of page parameters  
@@ -33,5 +35,6 @@ class InputTreatment
 	{
 		
 	}
+}
 }
 ?>

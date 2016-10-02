@@ -1,4 +1,6 @@
 <?php
+namespace ArticlesEdition
+{
 /**
 * ImageProcessor class - class for image processing 
 *
@@ -49,5 +51,6 @@ class ImageProcessor
 	{
 		
 	}
+}
 }
 ?>

@@ -1,4 +1,6 @@
 <?php
+namespace ArticlesEdition
+{
 /**
 * PictureTypes class - Enumeration of picture types
 *
@@ -8,5 +10,6 @@ Abstract Class PictureTypes
 {
 	const FromFile = 0;
 	const FromData = 1;
+}
 }
 ?>

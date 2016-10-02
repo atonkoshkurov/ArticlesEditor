@@ -1,4 +1,6 @@
 <?php
+namespace ArticlesEdition
+{
 /**
 * ArticleDescription class - structure of article parameters: id, date, title 
 *
@@ -20,5 +22,6 @@ class ArticleDescription
 	* @var string $title article title
 	*/
 	public $title;
+}
 }
 ?>

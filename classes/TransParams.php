@@ -1,4 +1,6 @@
 <?php
+namespace ArticlesEdition
+{
 /**
 * TransParams class - class for translation of post parameters to session parameters 
 *
@@ -19,5 +21,6 @@ class TransParams
 	{
 		
 	}
+}
 }
 ?>
