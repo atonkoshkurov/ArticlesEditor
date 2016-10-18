@@ -1,0 +1,19 @@
+.NavMenu {
+	padding-right: 7px;
+    padding-left: 7px; /* Поля вокруг текста */
+	text-decoration: none; 
+    font-size: 16; 
+	background-color: #FBFBE8;
+	border: 1px solid #FBFBE8
+   }
+.NavMenuOver {
+	padding-right: 7px;
+    padding-left: 7px; /* Поля вокруг текста */
+	text-decoration: none;     
+    font-size: 16; 
+	background-color: #FAFAD2;
+	border: 1px solid black
+   }
+a.NavMenu {color: #800000}
+a.NavMenuOver {color: #800000} 
+span.NavMenu {font-weight: bold} 
