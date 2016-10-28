@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name = "articles">
+	<file>E:\Development\ArticleEditor\ArticleEditor_git\tests\NavigatorViewerTest.php</file>
+  </testsuite>
+</testsuites>

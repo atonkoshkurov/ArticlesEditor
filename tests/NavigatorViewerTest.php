@@ -21,9 +21,27 @@ class NavigatorViewerTest extends TestCase
   */
   private static $testDataFile = 'NavigatorMenuSamples.html';
   
-  protected function setUp() { }
+  protected function setUp() {}
   
   protected function tearDown(){ }
+ 
+  /**
+  * Gets inner tag text as is
+  * @param string $fulltdtext full tag text
+  * @return array 
+  */
+  private function getInnerText($fulltdtext)
+{
+	$result = '';
+	$startsymbol ='>';
+	$endpart = '</td>';
+	
+	$startPos = strpos($fulltdtext,$startsymbol)+1;
+	$nextPos = strpos($fulltdtext,$endpart);
+	$result = substr($fulltdtext, $startPos, $nextPos - $startPos);
+	
+	return $result;
+}
  
   /**
   * @dataProvider getNavigatorParams
@@ -31,14 +49,14 @@ class NavigatorViewerTest extends TestCase
   public function testShowNavigator($currentArticle, $articleAmount, $sampleNavigatorText)
   {
      $navigatorText = NavigatorViewer::ShowNavigator(self::$pageVolume,$currentArticle,$articleAmount,self::$pageAddress);
-	 $this->assertEquals($navigatorText,$sampleNavigatorText);
+	 $this->assertEquals($navigatorText,$sampleNavigatorText); 
   }
 
   public function getNavigatorParams() 
   {
   	$result = array();	
 	
-	$htmldata = new DOMDocument();
+	$htmldata = new DOMDocument('4.0','UTF-8');
 	$htmldata->loadHTMLFile(dirname(__FILE__).'/'.self::$testDataFile);
 	$tbody_list = $htmldata->documentElement->getElementsByTagName('tbody'); 
 	$tbody_node = $tbody_list[0];	
@@ -46,24 +64,13 @@ class NavigatorViewerTest extends TestCase
 	foreach($tbody_node->childNodes as $child)
 		if (strcmp($child->nodeName,'tr')===0)
 		{
-			foreach($child->childNodes as $tdnode)
-			{
-				if (strcmp($tdnode->nodeName,'td')===0)
-				{
-					if ($tdnode->hasChildNodes())
-					{
-						/**foreach($tdnode->childNodes as $txtnode)
-						*$result[] = array(0,$txtnode->nodeName,$txtnode->nodeValue);
-						*/
-					}
-				}
-				else
-				{					
-					
-				}
-				$result[] = array(0,$tdnode->nodeName,$tdnode->nodeValue);
-			}
-			break;
+			$tdnodes = $child->getElementsByTagName('td');			
+			$currentValue = $tdnodes[0]->nodeValue;
+			$amountValue = $tdnodes[1]->nodeValue;			
+			$tdtext = $htmldata->saveHtml($tdnodes[2]);
+			$sampleString = $this->getInnerText($tdtext);
+			
+			$result[] = array($currentValue,$amountValue,$sampleString);			
 		}
 	
 	return $result;

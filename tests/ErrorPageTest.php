@@ -16,7 +16,8 @@ class ErrorPageTest extends TestCase
       $errortest = $this->getExampleText();
       $pictErrors = $this->getPreparedPictureErrors();      
       $pageText = ErrorPage::showErrors($pictErrors);
-      $this->assertEquals($errortest, $pageText);
+	  
+	  $this->assertEquals($pageText, $errortest);
   }
 
   /**
@@ -47,7 +48,7 @@ class ErrorPageTest extends TestCase
   private function getExampleText()
   {
 	  $filename = dirname(__FILE__).'/error_artlist.html';
-	  $result = readfile($filename);
+	  $result = file_get_contents($filename);
 
 	  return $result;
   }

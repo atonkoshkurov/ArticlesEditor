@@ -18,7 +18,7 @@ class NavigatorViewer
 	*/	
 	static public function ShowNavigator($pageVolume, $current, $articleAmount, $pageAddress) 
 	{
-		return 'to do';
+		return 'сделать';
 	}
 }
 }

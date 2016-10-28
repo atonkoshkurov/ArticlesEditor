@@ -1,4 +1,7 @@
 <?php
+require_once(dirname('DBConnector.php');
+use ArticlesEdition\DBConnector;
+
 namespace ArticlesEdition
 {
 /**
@@ -8,18 +11,14 @@ namespace ArticlesEdition
 */
 Class ArticleManager
 {
-	private $dbtype;
-	private $dbhost;
-	private $dbname;	
-	private $login;
-	private $psw;
+	private $localpdo;
 	
-	const DB_CONNECTION_SETTINGS_FILE = 'dbconnection.ini';
+	/** const DB_CONNECTION_SETTINGS_FILE = 'dbconnection.ini'; */
 	const TABLENAME = 'articles';
 	
-	function __construct()
+	function __construct($db_connection)
 	{
-		FillConnectionParams();
+		$localpdo = $db_connection;
 	}
 	
 	/**
@@ -90,58 +89,6 @@ Class ArticleManager
 	public function GetArticle($id) 
 	{
 	
-	}
-	
-	/**
-	* Initialize connection parameters from file 'dbconnection.ini' 
-	* @return void
-	*/
-	private function FillConnectionParams()
-	{
-		$dbarray = file(self::DB_CONNECTION_SETTINGS_FILE);
-		$SetAmount = count($dbarray);
-		$nm = 0;
-		while ($nm < $SetAmount)
-		{
-			$db_connection_param = DecomposeParameter($dbarray[$nm]);
-			if (strcmp($db_connection_param["name"],'DBEngine') === 0)
-			{
-				$dbtype = $db_connection_param["value"];
-			} elseif (strcmp($db_connection_param["name"],'DBHost') === 0)
-			{
-				$dbhost = $db_connection_param["value"];
-			} elseif (strcmp($db_connection_param["name"],'DBName') === 0)
-			{
-				$dbname = $db_connection_param["value"];
-			} elseif (strcmp($db_connection_param["name"],'DBUser') === 0)
-			{
-				$login = $db_connection_param["value"];
-			} elseif (strcmp($db_connection_param["name"],'DBPsw') === 0)
-			{
-				$psw = $db_connection_param["value"];
-			}
-			
-			$nm = $nm + 1;
-		}
-	}
-	
-	/**
-	* Reads string with database connection parameter description and saves it into separate variables "name" and "value" 
-	* @return array 
-	*/
-	protected function DecomposeParameter($parameterString)
-	{
-		$par_name = '';
-		$par_value = '';
-		$pos = strpos($parameterString,':');
-		$posend = strpos($parameterString,';');
-		if ($pos > 0 && $posend > $pos)
-		{
-			$par_name = trim(substr($parameterString,0,$pos));
-			$par_value = trim(substr($parameterString,$pos+1,$posend - $pos - 1));
-		}
-		$result = ["name" => $par_name, "value" => $par_value];
-		return $result;
 	}
 }
 }
