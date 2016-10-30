@@ -8,15 +8,28 @@ class DBConnectorTest extends TestCase
 {
   private static $MsSQLCompName = 'WS-MSK-A2422';
   private static $testdbfile = 'testdbconnection.ini';
+  private static $badtestdbfile = 'badtestdbconnection.ini';  
+  
+  public static function setUpBeforeClass()
+  {
+    self::prepareDBIniFile();
+    self::prepareDBIniFile(true);
+  }  
+  
+  public static function tearDownAfterClass()
+  {
+  	 unlink(dirname(__FILE__).'/'.self::$testdbfile);
+  	 unlink(dirname(__FILE__).'/'.self::$badtestdbfile);  	 
+  }
   
   public function setUp()
   {
-	 $this->prepareDBIniFile();
+	 
   }
   
   public function tearDown()
   {
-	 unlink(dirname(__FILE__).'/'.self::$testdbfile);
+	  
   }
  
   /**
@@ -24,10 +37,7 @@ class DBConnectorTest extends TestCase
   */
   public function testParameterDecomposition()
   {
-      $paramString = 'DBHost: 127.0.0.1;';
-	  $method = new ReflectionMethod('ArticlesEdition\DBConnector', 'decomposeParameter');
-	  $method->setAccessible(TRUE);
-	  $params = $method->invoke(new DBConnector(dirname(__FILE__).'/'.self::$testdbfile),$paramString);
+     $params = $this->getDecomposedParams('DBHost: 127.0.0.1;');
 	        	  	  
 	  $this->assertEquals('DBHost',$params["name"]);
 	  $this->assertEquals('127.0.0.1',$params["value"]);
@@ -38,36 +48,52 @@ class DBConnectorTest extends TestCase
   */
   public function testWrongParameterDecomposition()
   {
-      $paramString = 'DBHost; 127.0.0.1:';
+     $params = $this->getDecomposedParams('DBHost; 127.0.0.1:');
+      
+     $this->assertEquals('',$params["name"]);
+	  $this->assertEquals('',$params["value"]);
   }
   
   public function testCorrectDBConnection()
   {
-	  
+	  $dbconn = new DBConnector(dirname(__FILE__).'/'.self::$testdbfile);
+	  $loc_connection = $dbconn->startConnection();
+	  $this->assertTrue(true); 
   }
   
   public function testWrongDBConnection()
   {
-	  
+	  $this->setExpectedException('PDOException');	  
+	  $dbconn = new DBConnector(dirname(__FILE__).'/'.self::$badtestdbfile);
+	  $loc_connection = $dbconn->startConnection();	  
+  }
+  
+  private function getDecomposedParams($paramString)
+  {
+  	  $method = new ReflectionMethod('ArticlesEdition\DBConnector', 'decomposeParameter');
+	  $method->setAccessible(TRUE);
+	  $params = $method->invoke(new DBConnector(dirname(__FILE__).'/'.self::$testdbfile),$paramString);
+	  return $params;
   }
   
   /**
   * Writes test database connection parameters file
   * @return void
   */
-  private function prepareDBIniFile()
+  private static function prepareDBIniFile($wrong = false)
   {
 	  $locCompName = getenv("COMPUTERNAME");
 	  $iniArray = null;
 	  if (strcmp($locCompName,self::$MsSQLCompName)===0)
 	  {
-		  $iniArray = $this->getMSSQLIniArray();
+		  $iniArray = self::getMSSQLIniArray($wrong);
 	  }
 	  else
 	  {
-		  $iniArray = $this->getMySQLIniArray();
+		  $iniArray = self::getMySQLIniArray($wrong);
 	  }
-	  $iniFile = fopen(dirname(__FILE__).'/'.self::$testdbfile,'w');
+	  $pathdb = ($wrong) ? dirname(__FILE__).'/'.self::$badtestdbfile : dirname(__FILE__).'/'.self::$testdbfile;
+	  $iniFile = fopen($pathdb,'w');
 	  foreach ($iniArray as $iniString) fwrite($iniFile, $iniString);
 	  fclose($iniFile);
   }
@@ -76,14 +102,14 @@ class DBConnectorTest extends TestCase
   * Prepares array of ms sql database settings
   * @return string[]
   */
-  private function getMSSQLIniArray()
+  private static function getMSSQLIniArray($wrongSettings = false)
   {
 	 $result = array();
   	 $result[] = "DBEngine: mssql;\r\n"; 
   	 $result[] = "DBHost: ws-msk-a2422;\r\n";
 	 $result[] = "DBName: naturetrip;\r\n";
 	 $result[] = "DBUser: ntrip;\r\n";
-	 $result[] = "DBPsw: 123;\r\n";
+	 $result[] = ($wrongSettings) ? "DBPsw: wrongpsw;\r\n" : "DBPsw: 123;\r\n";
   	   
   	 return $result;
   }
@@ -92,14 +118,14 @@ class DBConnectorTest extends TestCase
   * Prepares array of my sql database settings
   * @return string[]
   */
-  private function getMySQLIniArray()
+  private static function getMySQLIniArray($wrongSettings = false)
   {
 	 $result = array();
   	 $result[] = "DBEngine: mysql;\r\n"; 
   	 $result[] = "DBHost: 127.0.0.1;\r\n";
 	 $result[] = "DBName: naturetrip;\r\n";
 	 $result[] = "DBUser: ntrip;\r\n";
-	 $result[] = "DBPsw: 123;\r\n";
+	 $result[] = ($wrongSettings) ? "DBPsw: wrongpsw;\r\n" : "DBPsw: 123;\r\n";
   	   
   	 return $result;
   }

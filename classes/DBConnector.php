@@ -1,6 +1,9 @@
 <?php
 namespace ArticlesEdition
 {
+	
+use \PDO;
+use \PDOException;
 /**
 * ArticleManager class - class for operating with database table 'Articles'
 *
@@ -27,7 +30,7 @@ Class DBConnector
 	* @return PDO
 	*/
 	public function startConnection()
-    {
+    {		
 		$dsn = $this->dbtype.":host=".$this->dbhost.";dbname=".$this->dbname;
 		$result = new PDO($dsn,$this->login,$this->psw);
 		$result->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -59,19 +62,19 @@ Class DBConnector
 			$db_connection_param = $this->decomposeParameter($dbarray[$nm]);
 			if (strcmp($db_connection_param["name"],'DBEngine') === 0)
 			{
-				$dbtype = $db_connection_param["value"];
+				$this->dbtype = $db_connection_param["value"];
 			} elseif (strcmp($db_connection_param["name"],'DBHost') === 0)
 			{
-				$dbhost = $db_connection_param["value"];
+				$this->dbhost = $db_connection_param["value"];
 			} elseif (strcmp($db_connection_param["name"],'DBName') === 0)
 			{
-				$dbname = $db_connection_param["value"];
+				$this->dbname = $db_connection_param["value"];
 			} elseif (strcmp($db_connection_param["name"],'DBUser') === 0)
 			{
-				$login = $db_connection_param["value"];
+				$this->login = $db_connection_param["value"];
 			} elseif (strcmp($db_connection_param["name"],'DBPsw') === 0)
 			{
-				$psw = $db_connection_param["value"];
+				$this->psw = $db_connection_param["value"];
 			}
 			
 			$nm = $nm + 1;
