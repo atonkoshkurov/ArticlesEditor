@@ -1,9 +1,11 @@
 <?php
-require_once(dirname('DBConnector.php');
-use ArticlesEdition\DBConnector;
-
 namespace ArticlesEdition
 {
+require_once('DBConnector.php');
+require_once('ArticleManagerException.php');
+use DBConnector;
+use ArticleManagerException;
+
 /**
 * ArticleManager class - class for operating with database table 'Articles'
 *
@@ -18,7 +20,7 @@ Class ArticleManager
 	
 	function __construct($db_connection)
 	{
-		$localpdo = $db_connection;
+		$this->localpdo = $db_connection;
 	}
 	
 	/**
@@ -26,9 +28,16 @@ Class ArticleManager
 	* @param string $title
 	* @return int
 	*/	
-	public function Add($title) 
+	public function add($title) 
 	{
+		$conn = $this->localpdo->startConnection();
+		$sqltext = 'Insert into '.self::TABLENAME.'(title) values( ? );';
+		$stmt = $conn->prepare($sqltext);
+		$stmt->execute(array($title));
+		$artId = $conn->lastInsertId();		
 		
+		$this->localpdo->closeConnection($conn);
+		return $artId;
 	}
 	
 	/**
@@ -37,7 +46,7 @@ Class ArticleManager
 	* @param string $title
 	* @return void
 	*/
-	public function Edit($id, $title) 
+	public function edit($id, $title) 
 	{
 		
 	}
@@ -47,7 +56,7 @@ Class ArticleManager
 	* @param int $id
 	* @return void
 	*/
-	public function Remove($id) 
+	public function remove($id) 
 	{
 		
 	}
@@ -56,27 +65,19 @@ Class ArticleManager
 	* Gets the amount of articles 
 	* @return int
 	*/
-	public function GetAmount() 
-	{
-		
-	}
-	
-	/**
-	* Gets the list of all article descriptions
-	* @return ArticleDescription[]
-	*/
-	public function GetList() 
+	public function getAmount() 
 	{
 		
 	}
 	
 	/**
 	* Gets the list of article descriptions from 'first' to 'last' (by sequence number, not id)
+	* passing 0 values means requesting all the list
 	* @param int $first
 	* @param int $last
 	* @return ArticleDescription[]
 	*/
-	public function GetList($first, $last) 
+	public function getList($first = 0, $last = 0) 
 	{
 		
 	}
@@ -86,7 +87,7 @@ Class ArticleManager
 	* @param int $id 
 	* @return ArticleDescription
 	*/
-	public function GetArticle($id) 
+	public function getArticle($id) 
 	{
 	
 	}

@@ -6,20 +6,24 @@ use ArticlesEdition\DBConnector;
 
 class DBConnectorTest extends TestCase
 {
-  private static $MsSQLCompName = 'WS-MSK-A2422';
-  private static $testdbfile = 'testdbconnection.ini';
-  private static $badtestdbfile = 'badtestdbconnection.ini';  
+  const mysqltestfile = 'testmysqldb.ini';
+  const mysqlbadtestfile = 'badtestmysqldb.ini';
+  const mssqltestfile = 'testmssqldb.ini';
+  const mssqlbadtestfile = 'badtestmssqldb.ini';  
+  
+  const MsSQLCompName = 'WS-MSK-A2422';
+  
+  private static $testdbfile = '';
+  private static $badtestdbfile = '';  
   
   public static function setUpBeforeClass()
   {
     self::prepareDBIniFile();
-    self::prepareDBIniFile(true);
   }  
   
   public static function tearDownAfterClass()
   {
-  	 unlink(dirname(__FILE__).'/'.self::$testdbfile);
-  	 unlink(dirname(__FILE__).'/'.self::$badtestdbfile);  	 
+  	   	 
   }
   
   public function setUp()
@@ -59,6 +63,7 @@ class DBConnectorTest extends TestCase
 	  $dbconn = new DBConnector(dirname(__FILE__).'/'.self::$testdbfile);
 	  $loc_connection = $dbconn->startConnection();
 	  $this->assertTrue(true); 
+	  $dbconn->closeConnection($loc_connection);
   }
   
   public function testWrongDBConnection()
@@ -77,57 +82,22 @@ class DBConnectorTest extends TestCase
   }
   
   /**
-  * Writes test database connection parameters file
+  * Chooses test database connection parameters file
   * @return void
   */
-  private static function prepareDBIniFile($wrong = false)
+  private static function prepareDBIniFile()
   {
 	  $locCompName = getenv("COMPUTERNAME");
-	  $iniArray = null;
-	  if (strcmp($locCompName,self::$MsSQLCompName)===0)
+	  if (strcmp($locCompName,self::MsSQLCompName)===0)
 	  {
-		  $iniArray = self::getMSSQLIniArray($wrong);
+		  self::$badtestdbfile = self::mssqlbadtestfile;
+		  self::$testdbfile = self::mssqltestfile;
 	  }
 	  else
 	  {
-		  $iniArray = self::getMySQLIniArray($wrong);
+		  self::$badtestdbfile = self::mysqlbadtestfile;
+		  self::$testdbfile = self::mysqltestfile;
 	  }
-	  $pathdb = ($wrong) ? dirname(__FILE__).'/'.self::$badtestdbfile : dirname(__FILE__).'/'.self::$testdbfile;
-	  $iniFile = fopen($pathdb,'w');
-	  foreach ($iniArray as $iniString) fwrite($iniFile, $iniString);
-	  fclose($iniFile);
-  }
-  
-  /**
-  * Prepares array of ms sql database settings
-  * @return string[]
-  */
-  private static function getMSSQLIniArray($wrongSettings = false)
-  {
-	 $result = array();
-  	 $result[] = "DBEngine: mssql;\r\n"; 
-  	 $result[] = "DBHost: ws-msk-a2422;\r\n";
-	 $result[] = "DBName: naturetrip;\r\n";
-	 $result[] = "DBUser: ntrip;\r\n";
-	 $result[] = ($wrongSettings) ? "DBPsw: wrongpsw;\r\n" : "DBPsw: 123;\r\n";
-  	   
-  	 return $result;
-  }
-  
-  /**
-  * Prepares array of my sql database settings
-  * @return string[]
-  */
-  private static function getMySQLIniArray($wrongSettings = false)
-  {
-	 $result = array();
-  	 $result[] = "DBEngine: mysql;\r\n"; 
-  	 $result[] = "DBHost: 127.0.0.1;\r\n";
-	 $result[] = "DBName: naturetrip;\r\n";
-	 $result[] = "DBUser: ntrip;\r\n";
-	 $result[] = ($wrongSettings) ? "DBPsw: wrongpsw;\r\n" : "DBPsw: 123;\r\n";
-  	   
-  	 return $result;
   }
 }
 ?>
