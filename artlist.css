@@ -2,9 +2,9 @@
 .aref {
     border: 1px solid black;
     padding: 7px; 
-    background: #efecdf;
+    background: #efecdf; 
     font-weight: bold; 
     font-size: 15; 
-    white-space: nowrap; 
+    white-space: nowrap;
 	font-family: Verdana
    }

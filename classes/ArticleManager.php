@@ -31,9 +31,9 @@ Class ArticleManager
 	public function add($title) 
 	{
 		$conn = $this->localpdo->startConnection();
-		$sqltext = 'Insert into '.self::TABLENAME.'(title) values( ? );';
+		$sqltext = 'Insert into '.self::TABLENAME.'(title, creationDate) values("'.$title.'", curdate());';
 		$stmt = $conn->prepare($sqltext);
-		$stmt->execute(array($title));
+		$stmt->execute();
 		$artId = $conn->lastInsertId();		
 		
 		$this->localpdo->closeConnection($conn);
@@ -88,6 +88,16 @@ Class ArticleManager
 	* @return ArticleDescription
 	*/
 	public function getArticle($id) 
+	{
+	
+	}
+	
+	/**
+	* Gets article sequence number
+	* @param int $id 
+	* @return int
+	*/
+	public function getArticleSequenceNumber($id) 
 	{
 	
 	}

@@ -35,14 +35,22 @@ class ArticleManagerTest extends TestCase
   public function setUp(){ }
   public function tearDown(){ }
  
+  public function testNewArticleDate() 
+  {
+	 $currentDay = date("Y-m-d");	 
+	 $artId = self::$artManager->add('test article');
+	 $artDescription = self::$artManager->getArticle($artId);
+	 $this->assertEquals($artDescription->date,$currentDay);
+  }  
+  
   public function testAdd()
   {
-     $beforeAmount = self::$artManager->getAmount();
-     $artId = self::$artManager->add('test artile');
-     $afterAmount = self::$artManager->getAmount();
-     $this->assertEquals($afterAmount,$beforeAmount + 1);
+    $beforeAmount = self::$artManager->getAmount();
+    $artId = self::$artManager->add('test article');
+    $afterAmount = self::$artManager->getAmount();
+    $this->assertEquals($afterAmount,$beforeAmount + 1);
      
-     return $artId;
+    return $artId;
   }
   
   /**
@@ -99,8 +107,8 @@ class ArticleManagerTest extends TestCase
   
   public function testGetList()
   {
-     self::$artManager->add('test artile 1');
-     self::$artManager->add('test artile 2');
+     self::$artManager->add('test article 1');
+     self::$artManager->add('test article 2');
      $ArticlesAmount = self::$artManager->getAmount();
      $articles = self::$artManager->getList();
      $this->assertEquals($ArticlesAmount,count($articles));
@@ -109,19 +117,34 @@ class ArticleManagerTest extends TestCase
   public function testGetWrongList()
   {
 	  $this->setExpectedException('ArticleManagerException');     
-     self::$artManager->add('test artile 1');
-     self::$artManager->add('test artile 2');
+     self::$artManager->add('test article 1');
+     self::$artManager->add('test article 2');
      $ArticlesAmount = self::$artManager->getAmount();
      $articles = self::$artManager->getList($ArticlesAmount-1,$ArticlesAmount);
   }
   
   public function testGetRangeList()
   {
-     self::$artManager->add('test artile 1');
-     self::$artManager->add('test artile 2');
+     self::$artManager->add('test article 1');
+     self::$artManager->add('test article 2');
      $ArticlesAmount = self::$artManager->getAmount();
      $articles = self::$artManager->getList(0,$ArticlesAmount-1);
      $this->assertEquals($ArticlesAmount,count($articles));
+  }
+  
+  public function testGetSequenceNumber()
+  {
+  	  self::$artManager->add('test article 1');
+     self::$artManager->add('test article 2');
+     $artId = self::$artManager->add('test article 3');
+     $seqNumber = self::$artManager->getArticleSequenceNumber($artId);
+     $this->assertEquals($seqNumber,3);
+  }
+  
+  public function testGetWrongSequenceNumber()
+  {
+  	  $this->setExpectedException('ArticleManagerException');
+  	  $artId = self::$artManager->getArticleSequenceNumber(1);
   }
   
   private static function createArticleManager()
