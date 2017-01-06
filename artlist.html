@@ -3,8 +3,19 @@
 <head>
 <meta charset="utf-8"/>
 <link rel="stylesheet" type="text/css" href="artlist.css"/>
+<script>
+
+	var currentArtId = "0";
+	var artRowClassName = 'artRow';
+	var artRowOverClassName = 'artRowOver';
+	var artRowSelectedClassName = 'artRowSelected';
+	var buttonClassName = 'formButton formButtonOut';
+	var buttonOverClassName = 'formButton formButtonOver';
+	
+</script>
+<script src="artlist.js"></script>
 </head>
-<body>
+<body onload="setEventHandlers();">
 
 <h2 align="center">Редактор статей</h2>
 <table width="90%" align="center">
@@ -17,49 +28,56 @@
 <td>
 	<table border="1" width="99%">
 		<thead>
-			<tr align="center">
-				<th>№</th>
-				<th>дата</th>
-				<th>заголовок</th>
+			<tr align="center" class="tableCaption">
 				<th hidden></th>
+				<th width = "110">дата</th>
+				<th>заголовок</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody id="tablerows">
 			<tr>
-				<td>1</td>
+				<td hidden>6</td>
 				<td>2015-12-05</td>
 				<td>поход по Северобайкальскому хребту</td>
-				<td hidden>ArtId=6</td>
 			</tr>
 			<tr>
-				<td>2</td>
+				<td hidden>7</td>
 				<td>2016-07-24</td>
 				<td>Поездка в Истру</td>
-				<td hidden>ArtId=7</td>
 			</tr>
 			<tr>
-				<td>3</td>
+				<td hidden>10</td>
 				<td>2016-08-01</td>
 				<td>Вдоль Волги в мае по Тверской области</td>
-				<td hidden>ArtId=10</td>
 			</tr>
 			<tr>
-				<td>4</td>
+				<td hidden>12</td>
 				<td>2016-09-01</td>
 				<td>Угра - национальный парк</td>
-				<td hidden>ArtId=12</td>
 			</tr>
 			<tr>
-				<td>5</td>
+				<td hidden>13</td>
 				<td>2016-10-21</td>
 				<td>Питер в октябре 2016</td>
-				<td hidden>ArtId=13</td>
 			</tr>
 		</tbody>
 	</table>
 </td>
 </tr>
+<tr>
+<td align = "center">
+<form id = "commandsForm" method="post">
+<input type = "button" name = "Add" value = "Добавить" onclick = "fillFormParams('artedit.php')" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type = "button" name = "Edit" value = "Редактировать" onclick = "fillFormParams('artedit.php')"/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type = "button" name = "Del" value = "Удалить" onclick = "fillFormParams('artremove.php')"/>
+<input type = "hidden" name = "articleId" value = "0" id = "artIdInput" />
+</form>
+</td>
+</tr>
 </table>
+
 
 </body>
 </html>

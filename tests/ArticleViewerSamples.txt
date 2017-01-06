@@ -1,0 +1,228 @@
+1
+//*Начало блока*//
+<articleDescriptions>
+</articleDescriptions>
+//*Разделитель*//
+<table border="1" width="99%">
+	<thead>
+		<tr align="center" class="tableCaption">
+			<th hidden></th>
+			<th width = "110">дата</th>
+			<th>заголовок</th>
+		</tr>
+	</thead>
+	<tbody id="tablerows">
+		<tr>
+			<td hidden></td>
+			<td></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td hidden></td>
+			<td></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td hidden></td>
+			<td></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td hidden></td>
+			<td></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td hidden></td>
+			<td></td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+//*Конец блока*//
+2
+//*Начало блока*//
+<articleDescriptions>
+	<articleDescription>
+		<id>1</id>
+		<date>2015-12-05</date>
+		<title>Статья 1</title>
+	</articleDescription>
+	<articleDescription>
+		<id>2</id>
+		<date>2016-01-05</date>
+		<title>Статья 2</title>
+	</articleDescription>
+	<articleDescription>
+		<id>4</id>
+		<date>2016-03-15</date>
+		<title>Статья 4</title>
+	</articleDescription>
+</articleDescriptions>
+//*Разделитель*//
+<table border="1" width="99%">
+	<thead>
+		<tr align="center" class="tableCaption">
+			<th hidden></th>
+			<th width = "110">дата</th>
+			<th>заголовок</th>
+		</tr>
+	</thead>
+	<tbody id="tablerows">
+		<tr>
+			<td hidden>1</td>
+			<td>2015-12-05</td>
+			<td>Статья 1</td>
+		</tr>
+		<tr>
+			<td hidden>2</td>
+			<td>2016-01-05</td>
+			<td>Статья 2</td>
+		</tr>
+		<tr>
+			<td hidden>4</td>
+			<td>2016-03-15</td>
+			<td>Статья 4</td>
+		</tr>
+		<tr>
+			<td hidden></td>
+			<td></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td hidden></td>
+			<td></td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+//*Конец блока*//
+3
+//*Начало блока*//
+<articleDescriptions>
+	<articleDescription>
+		<id>1</id>
+		<date>2015-12-05</date>
+		<title>Статья 1</title>
+	</articleDescription>
+	<articleDescription>
+		<id>2</id>
+		<date>2016-01-05</date>
+		<title>Статья 2</title>
+	</articleDescription>
+	<articleDescription>
+		<id>4</id>
+		<date>2016-03-15</date>
+		<title>Статья 4</title>
+	</articleDescription>
+	<articleDescription>
+		<id>7</id>
+		<date>2016-04-21</date>
+		<title>Статья 7</title>
+	</articleDescription>
+</articleDescriptions>
+//*Разделитель*//
+<table border="1" width="99%">
+	<thead>
+		<tr align="center" class="tableCaption">
+			<th hidden></th>
+			<th width = "110">дата</th>
+			<th>заголовок</th>
+		</tr>
+	</thead>
+	<tbody id="tablerows">
+		<tr>
+			<td hidden>1</td>
+			<td>2015-12-05</td>
+			<td>Статья 1</td>
+		</tr>
+		<tr>
+			<td hidden>2</td>
+			<td>2016-01-05</td>
+			<td>Статья 2</td>
+		</tr>
+		<tr>
+			<td hidden>4</td>
+			<td>2016-03-15</td>
+			<td>Статья 4</td>
+		</tr>
+		<tr>
+			<td hidden>7</td>
+			<td>2016-04-21</td>
+			<td>Статья 7</td>
+		</tr>
+		<tr>
+			<td hidden></td>
+			<td></td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+//*Конец блока*//
+4
+//*Начало блока*//
+<articleDescriptions>
+	<articleDescription>
+		<id>6</id>
+		<date>2016-05-11</date>
+		<title>Статья 6</title>
+	</articleDescription>
+	<articleDescription>
+		<id>7</id>
+		<date>2016-05-19</date>
+		<title>Статья 7</title>
+	</articleDescription>
+	<articleDescription>
+		<id>8</id>
+		<date>2016-05-22</date>
+		<title>Статья 8</title>
+	</articleDescription>
+	<articleDescription>
+		<id>9</id>
+		<date>2016-06-01</date>
+		<title>Статья 9</title>
+	</articleDescription>
+	<articleDescription>
+		<id>10</id>
+		<date>2016-06-21</date>
+		<title>Статья 10</title>
+	</articleDescription>
+</articleDescriptions>
+//*Разделитель*//
+<table border="1" width="99%">
+	<thead>
+		<tr align="center" class="tableCaption">
+			<th hidden></th>
+			<th width = "110">дата</th>
+			<th>заголовок</th>
+		</tr>
+	</thead>
+	<tbody id="tablerows">
+		<tr>
+			<td hidden>6</td>
+			<td>2016-05-11</td>
+			<td>Статья 6</td>
+		</tr>
+		<tr>
+			<td hidden>7</td>
+			<td>2016-05-19</td>
+			<td>Статья 7</td>
+		</tr>
+		<tr>
+			<td hidden>8</td>
+			<td>2016-05-22</td>
+			<td>Статья 8</td>
+		</tr>
+		<tr>
+			<td hidden>9</td>
+			<td>2016-06-01</td>
+			<td>Статья 9</td>
+		</tr>
+		<tr>
+			<td hidden>10</td>
+			<td>2016-06-21</td>
+			<td>Статья 10</td>
+		</tr>
+	</tbody>
+</table>
+//*Конец блока*//

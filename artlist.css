@@ -1,10 +1,22 @@
-.redtitle { color: #DC143C; font-weight: bold; font-family: Verdana }
-.aref {
-    border: 1px solid black;
-    padding: 7px; 
-    background: #efecdf; 
-    font-weight: bold; 
-    font-size: 15; 
-    white-space: nowrap;
-	font-family: Verdana
-   }
+.artRow { 
+	color: #000000; background: #EFFFFF; font-weight: normal; font-family: Calibri 
+	}
+.artRowOver { 
+	color: #000000; background: #C8F2F2; font-weight: normal; font-family: Calibri 
+	}
+.artRowSelected { 
+	color: #FFFFFF; background: #5F7F6F; font-weight: bold; font-family: Calibri 
+	}
+.tableCaption {
+	background: #DFCCCC; font-weight: bold; font-family: Times New Roman
+	}
+.formButton {
+	background: #DFCCCC; font-weight: normal; font-family: Arial; width: 125px;
+	height: 25px; 
+	-moz-border-radius: 8px; /* закругление для старых Mozilla Firefox */
+	-webkit-border-radius: 8px; /* закругление для старых Chrome и Safari */
+	-khtml-border-radius:8px; /* закругл. для браузера Konquerer системы Linux */
+	border-radius: 8px; /* закругление углов для всех, кто понимает */
+	}
+.formButtonOver { border: 3px #333377 solid }
+.formButtonOut { border: 2px #557755 solid }	

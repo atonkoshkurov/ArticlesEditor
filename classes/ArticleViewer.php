@@ -11,12 +11,14 @@ class ArticleViewer
 	/**
 	* Generates the table with a part of articles on a page
 	* @param ArticleDescription[] $articleList list of articles
-	* @param int $currentArticleNumber the number of current article
+	* @param int $pageVolume the number of articles on page
 	* @return string
 	*/	
-	static public function ShowTable($articleList, $currentArticleNumber) 
+	static public function ShowTable($articleList, $pageVolume) 
 	{
+		$result = "";
 		
+		return $result;
 	}
 }
 }
