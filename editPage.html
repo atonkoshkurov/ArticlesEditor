@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+<meta charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="styles/editPage.css"/>
+<script>
+
+	var buttonClassName = 'formButton formButtonOut';
+	var buttonOverClassName = 'formButton formButtonOver';
+	
+</script>
+<script src="scripts/editPage.js"></script>
+</head>
+<body onload="setEventHandlers();">
+<form enctype = "multipart/form-data" method = "post" onsubmit = "onsubmitform();">
+<table align="center" width="90%" cellspacing = "0" cellpadding = "3">
+	<tr>
+		<td bgcolor = "#DFCCCC">
+			<table id = "ArticleCaptionTable" width = "99%">
+				<tr>
+					<td width="80px">
+						<span id = "ArticleCaptionLabel">&nbsp;&nbsp;Заголовок&nbsp;&nbsp;</span>
+					</td>
+					<td>
+						<input id = "ArticleCaptionField" type = "text" name = "articleTitle"></input>
+					</td>
+				</tr>
+			</table>
+			&nbsp;&nbsp;			
+			<button type = "button" class = "boldButtons editingButtons" onclick = "setfontweight();">Ж</button>
+			<button type = "button" class = "editingButtons" onclick = "setfontstyle();">К</button>
+			<button type = "button" class = "editingButtons" onclick = "setfontdecor();">П</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button type = "button" class = "editingButtons boldButtons">З1</button>
+			<button type = "button" class = "editingButtons boldButtons">З2</button>
+			<button type = "button" class = "editingButtons boldButtons">З3</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button type = "button" class = "editingButtons imgButtons" title = "Влево"><img src = "DecorImages\alignLeft.png" alt = "Влево" /></button>
+			<button type = "button" class = "editingButtons imgButtons" title = "По центру"><img src = "DecorImages\alignCenter.png" alt = "По центру" /></button>
+			<button type = "button" class = "editingButtons imgButtons" title = "Вправо"><img src = "DecorImages\alignRight.png" alt = "Вправо" /></button>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button type = "button" id = "pictureBtn" class = "boldButtons">Рис.</button>			
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor = "#DFCCCC" align = "center">
+			<textarea id = "artarea" rows = "25"></textarea>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor = "#DFCCCC" align = "center">
+			<input type = "button" name = "Save" value = "Сохранить"/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type = "button" name = "Preview" value = "Предв. просмотр"/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type = "button" name = "Cancel" value = "Отмена"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span class = "piclabel">&lt;&lt; рис.1 &gt;&gt;</span>&nbsp;
+			<input class = "filefield" type = "file" name = "pic1" accept = "image/*"/>&nbsp;
+			<input class = "xyfield" type = "text" name = "xvalue1" maxlength = "4"/>&nbsp;<span class = "bigcomma">,</span>&nbsp;&nbsp;
+			<input class = "xyfield" type = "text" name = "yvalue1" maxlength = "4"/>&nbsp;
+			<select name = "measure1">
+				<option value = "1">px</option>
+				<option value = "2">%</option>
+			</select>
+			&nbsp;
+			<button id = "delpicture1" >x</button>
+		</td>
+	</tr>	
+</table>
+</form>
+</body>
+</html>

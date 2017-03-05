@@ -1,0 +1,38 @@
+#ArticleCaptionTable {
+	padding: 2px 2px 7px
+}
+#ArticleCaptionLabel {
+	font-weight: bold; font-size: 20px
+}
+#ArticleCaptionField {
+	font-size: 17px; width: 99%
+}
+#pictureBtn {
+	width: 54px; height: 32px; font-size: 16px
+}
+.boldButtons {
+	font-weight: bold
+}
+.editingButtons {
+	width: 40px; height: 32px; font-size: 15px
+}
+.imgButtons {
+	vertical-align: bottom
+}
+textarea {
+	width: 99%
+}
+.formButton {
+	background: #FFFFFF; font-weight: normal; font-family: Arial; width: 140px;
+	height: 28px; font-size: 14px;
+	-moz-border-radius: 8px; /* закругление для старых Mozilla Firefox */
+	-webkit-border-radius: 8px; /* закругление для старых Chrome и Safari */
+	-khtml-border-radius:8px; /* закругл. для браузера Konquerer системы Linux */
+	border-radius: 8px; /* закругление углов для всех, кто понимает */
+	}
+.formButtonOver { background: #C8F2F2; border: 3px #333377 solid }
+.formButtonOut { background: #FFFFFF; border: 2px #557755 solid }
+.piclabel { font-size: 17px }
+.xyfield { width: 50px }
+.bigcomma { font-size: 20px; font-weight: bold }
+.filefield { width: 350px }
