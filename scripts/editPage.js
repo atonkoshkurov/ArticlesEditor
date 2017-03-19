@@ -10,6 +10,21 @@
 		btn.className = buttonClassName;
 	}
 	
+	function selectionInText()
+	{
+		this.text = "";
+		this.startPos = -1;
+		this.endPos = -1;
+		
+		this.getText = function() {return this.text;}
+		this.getStart = function() {return this.startPos;}
+		this.getEnd = function() {return this.endPos;}
+		
+		this.setText = function(txt) {this.text = txt;}
+		this.setStart = function(startPosition) {this.startPos = startPosition;}
+		this.setEnd = function(endPosition) {this.endpos = endPosition;}
+	}
+	
 	function setEventHandlers()
 	{
 		var buttons = document.getElementsByTagName('input');
@@ -124,6 +139,17 @@
 		{
 			result = tagbegin + textPiece + tagend;
 		}
+		return result;
+	}
+	
+	function setParagraphAlign(text, startPos, endPos, alignType)
+	{
+		var result = new selectionInText();
+		if (startPos > endPos)
+		{ throw new RangeError("The start position should not be more than end position."); }
+		if (endPos > text.length)
+		{ throw new RangeError("The end position is out of text length"); }
+		
 		return result;
 	}
 	
