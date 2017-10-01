@@ -25,6 +25,33 @@
 		this.setEnd = function(endPosition) {this.endpos = endPosition;}
 	}
 	
+	function SectionTypes()
+	{
+		SectionTypes.unknown = 0;
+		SectionTypes.paragraph = 1;
+		SectionTypes.passage = 2;
+	}
+	
+	function ParagraphDefinitions()
+	{
+		ParagraphDefinitions.leftDefinition = "<p align=\"left\">";
+		ParagraphDefinitions.centerDefinition = "<p align=\"center\">";
+		ParagraphDefinitions.rightDefinition = "<p align=\"right\">";
+		ParagraphDefinitions.endDefinition = "</p>";
+	}
+	
+	function SectionParams()
+	{
+		this.position = -1;
+		this.sectionType = SectionTypes.unknown;
+		
+		this.getPosition = function() (return this.position;)
+		this.getSectionType = function() {return this.sectionType;}
+		
+		this.setPosition = function(position) (this.position = position;)
+		this.setSectionType = function(sectionType) {this.sectionType = sectionType;}
+	}
+	
 	function setEventHandlers()
 	{
 		var buttons = document.getElementsByTagName('input');
@@ -142,13 +169,82 @@
 		return result;
 	}
 	
+	function isParagraphStart(textPiece)
+	{
+		var result = false;
+		var leftLength = ParagraphDefinitions.leftDefinition.length;
+		var rightLength = ParagraphDefinitions.rightDefinition.length;
+		var centerLength = ParagraphDefinitions.centerDefinition.length;
+		
+		if ((textPiece >= leftLength && textPiece.substr(0,leftLength)==ParagraphDefinitions.leftDefinition)
+			|| (textPiece >= rightLength && textPiece.substr(0,rightLength)==ParagraphDefinitions.rightDefinition)
+			|| (textPiece >= centerLength && textPiece.substr(0,centerLength)==ParagraphDefinitions.centerDefinition))
+		{
+			result = true;
+		}
+		return result;
+	}
+	
+	function hasParagraphEndBefore(textPiece)
+	{
+		var result = false;
+		var textLength = textPiece.length;
+		var endLength = ParagraphDefinitions.endDefinition.length;
+		if (textLength >= endLength && textPiece.substr(textLength-endLength)==ParagraphDefinitions.endDefinition)
+		{
+			result = true;
+		}
+		return result;
+	}
+	
+	function isNewLine(startSectionSymbol)
+	{
+		var result = false;
+		if (startSectionSymbol == "\n" || startSectionSymbol== "\r" )
+		{
+			result = true;
+		}
+		return result;
+	}
+	
+	function getSectionStart(text, startPos, endpos)
+	{
+		var result = new SectionParams();
+		var leftSectionType = SectionTypes.unknown;
+		
+		while (leftSectionType == SectionTypes.unknown)
+		{
+			if (isParagraphStart(text.substr(startPos)))
+			{
+				leftSectionType = SectionTypes.paragraph;
+			}
+			else if ()
+			{
+				
+			}
+			else
+			{
+				startPos++;
+			}
+		}
+		
+		return result;
+	}
+	
 	function setParagraphAlign(text, startPos, endPos, alignType)
 	{
 		var result = new selectionInText();
+		if (startPos < 0)
+		{ throw new RangeError("The start position should be positive."); }
 		if (startPos > endPos)
-		{ throw new RangeError("The start position should not be more than end position."); }
+		{ throw new RangeError("The start position should not be more, than the end position."); }
 		if (endPos > text.length)
-		{ throw new RangeError("The end position is out of text length"); }
+		{ throw new RangeError("The end position is out of text length."); }
+		
+		var locStartPos = startPos;
+		var locEndPos = endPos;
+		var leftSectionType = SectionTypes.unknown;
+		var rightSectionType = SectionTypes.unknown;
 		
 		return result;
 	}
