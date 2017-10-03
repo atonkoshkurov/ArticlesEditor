@@ -45,10 +45,10 @@
 		this.position = -1;
 		this.sectionType = SectionTypes.unknown;
 		
-		this.getPosition = function() (return this.position;)
+		this.getPosition = function() {return this.position;}
 		this.getSectionType = function() {return this.sectionType;}
 		
-		this.setPosition = function(position) (this.position = position;)
+		this.setPosition = function(position) {this.position = position;}
 		this.setSectionType = function(sectionType) {this.sectionType = sectionType;}
 	}
 	
@@ -218,7 +218,7 @@
 			{
 				leftSectionType = SectionTypes.paragraph;
 			}
-			else if ()
+			else if (false)
 			{
 				
 			}
@@ -251,5 +251,5 @@
 	
 	function onsubmitform()
 	{
-		
+		return 0;
 	}
