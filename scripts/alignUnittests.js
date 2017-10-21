@@ -51,9 +51,29 @@ QUnit.test( "5. add paragraph test", function( assert )
   var sampleText = "test\n<p align=\"left\">paragraph\n<p align=\"right\">inside paragraph<\/p><p align=\"center\">abc<\/p><\/p>";
     
   var inputText = "test\n<p align=\"left\">paragraph\n<p align=\"right\">inside paragraph<\/p>abc<\/p>";
-  var selInText = setParagraphAlign(inputText,69,70,"left");
+  var selInText = setParagraphAlign(inputText,69,70,"center");
   
   assert.equal( selInText.getText(), sampleText, "Passed 1!" );
   assert.equal( selInText.getStart(), 68, "Passed 2!" );
   assert.equal( selInText.getEnd(), 93, "Passed 3!" );
+});
+
+QUnit.test("6. No align; end of subparagraph test", function( assert )
+{
+  var inputText = "<p align=\"left\">paragraph\n<p align=\"right\">inside paragraph<\/p>abc<\/p>";
+  var selInText = setParagraphAlign(inputText,62,67,"left");
+  
+  assert.equal( selInText.getText(), inputText, "Passed 1!");
+  assert.equal( selInText.getStart(), 62, "Passed 2!" );
+  assert.equal( selInText.getEnd(), 67, "Passed 3!" );  
+});
+
+QUnit.test("7. No align; start of subparagraph test", function( assert )
+{
+  var inputText = "test\n<p align=\"left\">paragraph\n<p align=\"right\">inside paragraph<\/p>abc<\/p>";
+  var selInText = setParagraphAlign(inputText,27,33,"left");
+  
+  assert.equal( selInText.getText(), inputText, "Passed 1!");
+  assert.equal( selInText.getStart(), 27, "Passed 2!" );
+  assert.equal( selInText.getEnd(), 33, "Passed 3!" );
 });

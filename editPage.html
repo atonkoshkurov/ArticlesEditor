@@ -31,13 +31,13 @@
 			<button type = "button" class = "editingButtons" onclick = "setfontstyle();">К</button>
 			<button type = "button" class = "editingButtons" onclick = "setfontdecor();">П</button>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<button type = "button" class = "editingButtons boldButtons">З1</button>
-			<button type = "button" class = "editingButtons boldButtons">З2</button>
-			<button type = "button" class = "editingButtons boldButtons">З3</button>
+			<button type = "button" class = "editingButtons boldButtons" onclick = "setCaption(1);">З1</button>
+			<button type = "button" class = "editingButtons boldButtons" onclick = "setCaption(2);">З2</button>
+			<button type = "button" class = "editingButtons boldButtons" onclick = "setCaption(3);">З3</button>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<button type = "button" class = "editingButtons imgButtons" title = "Влево"><img src = "DecorImages\alignLeft.png" alt = "Влево" /></button>
-			<button type = "button" class = "editingButtons imgButtons" title = "По центру"><img src = "DecorImages\alignCenter.png" alt = "По центру" /></button>
-			<button type = "button" class = "editingButtons imgButtons" title = "Вправо"><img src = "DecorImages\alignRight.png" alt = "Вправо" /></button>
+			<button type = "button" class = "editingButtons imgButtons" onclick = "setLeftAlign()" title = "Влево"><img src = "DecorImages\alignLeft.png" alt = "Влево" /></button>
+			<button type = "button" class = "editingButtons imgButtons" onclick = "setCenterAlign()" title = "По центру"><img src = "DecorImages\alignCenter.png" alt = "По центру" /></button>
+			<button type = "button" class = "editingButtons imgButtons" onclick = "setRightAlign()" title = "Вправо"><img src = "DecorImages\alignRight.png" alt = "Вправо" /></button>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<button type = "button" id = "pictureBtn" class = "boldButtons">Рис.</button>			
 		</td>
