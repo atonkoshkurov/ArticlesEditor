@@ -7,13 +7,14 @@
 
 	var buttonClassName = 'formButton formButtonOut';
 	var buttonOverClassName = 'formButton formButtonOver';
+	var picLastNumber = 0;
 	
 </script>
 <script src="scripts/editPage.js"></script>
 </head>
 <body onload="setEventHandlers();">
 <form enctype = "multipart/form-data" method = "post" onsubmit = "onsubmitform();">
-<table align="center" width="90%" cellspacing = "0" cellpadding = "3">
+<table id="maintable" align="center" width="90%" cellspacing = "0" cellpadding = "3">
 	<tr>
 		<td bgcolor = "#DFCCCC">
 			<table id = "ArticleCaptionTable" width = "99%">
@@ -39,7 +40,7 @@
 			<button type = "button" class = "editingButtons imgButtons" onclick = "setCenterAlign()" title = "По центру"><img src = "DecorImages\alignCenter.png" alt = "По центру" /></button>
 			<button type = "button" class = "editingButtons imgButtons" onclick = "setRightAlign()" title = "Вправо"><img src = "DecorImages\alignRight.png" alt = "Вправо" /></button>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<button type = "button" id = "pictureBtn" class = "boldButtons">Рис.</button>			
+			<button type = "button" id = "pictureBtn" class = "boldButtons" onclick = "setNewPicture();">Рис.</button>			
 		</td>
 	</tr>
 	<tr>
@@ -54,20 +55,6 @@
 			<input type = "button" name = "Preview" value = "Предв. просмотр"/>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type = "button" name = "Cancel" value = "Отмена"/>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<span class = "piclabel">&lt;&lt; рис.1 &gt;&gt;</span>&nbsp;
-			<input class = "filefield" type = "file" name = "pic1" accept = "image/*"/>&nbsp;
-			<input class = "xyfield" type = "text" name = "xvalue1" maxlength = "4"/>&nbsp;<span class = "bigcomma">,</span>&nbsp;&nbsp;
-			<input class = "xyfield" type = "text" name = "yvalue1" maxlength = "4"/>&nbsp;
-			<select name = "measure1">
-				<option value = "1">px</option>
-				<option value = "2">%</option>
-			</select>
-			&nbsp;
-			<button id = "delpicture1" >x</button>
 		</td>
 	</tr>	
 </table>

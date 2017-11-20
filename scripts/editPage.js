@@ -472,6 +472,106 @@
 		txtarea.focus();
 	}
 	
+	function setNewPicture()
+	{
+		picLastNumber = picLastNumber + 1;
+		var stringPicNumber = String(picLastNumber);
+		putPictureTag(stringPicNumber);
+		insertPictureRow(stringPicNumber);
+	}
+	
+	function getPictureFieldTag(stringPicNumber)
+	{
+		return " [(Picture" + stringPicNumber + ")] ";
+	}
+	
+	function getPicRowTag(stringPicNumber)
+	{
+		return "picRow"+stringPicNumber;
+	}
+	
+	function putPictureTag(stringPicNumber)
+	{
+		var txtarea = document.getElementById("artarea");
+		var endpos = txtarea.selectionEnd;	
+		var textcontent = txtarea.value;
+		var startPiece = textcontent.substring(0,endpos);
+		var endPiece = textcontent.substring(endpos);
+		var tagText = getPictureFieldTag(stringPicNumber);
+		
+		txtarea.value = startPiece + tagText + endPiece;
+		var startSel = txtarea.value.indexOf(tagText,endpos-3);
+		txtarea.selectionStart = startSel;
+		txtarea.selectionEnd = startSel + tagText.length;
+		txtarea.focus();
+	}
+	
+	function insertPictureRow(stringPicNumber)
+	{
+		var maintable = document.getElementById("maintable");
+		var newPicTd = document.createElement('td');
+		var picTemplate = getPictureTemplate();		
+		newPicTd.innerHTML = picTemplate.replace(new RegExp("\\[pNmb\\]",'g'),stringPicNumber);		
+		var tblRow = maintable.insertRow(maintable.rows.length);
+		tblRow.id = getPicRowTag(stringPicNumber);
+		tblRow.appendChild(newPicTd);
+	}
+	
+	function getPictureTemplate()
+	{
+		var pictureTemplate = '<span class = "piclabel">&lt;&lt; рис.[pNmb] &gt;&gt;</span>&nbsp;\
+			<input class = "filefield" type = "file" name = "pic[pNmb]" accept = "image/*"/>&nbsp;\
+			<input class = "xyfield" type = "text" name = "xvalue[pNmb]" maxlength = "4"/>&nbsp;<span class = "bigcomma">,</span>&nbsp;&nbsp;\
+			<input class = "xyfield" type = "text" name = "yvalue[pNmb]" maxlength = "4"/>&nbsp;\
+			<select name = "measure[pNmb]">\
+				<option value = "1">px</option>\
+				<option value = "2">%</option>\
+			</select>\
+			&nbsp;\
+			<button type = "button" onclick = "deletePicture([pNmb])" >x</button>';
+		return pictureTemplate;	
+	}
+	
+	function delPictureTags(stringPicNumber)
+	{
+		var txtarea = document.getElementById("artarea");
+		var textcontent = txtarea.value;
+		var tagText = getPictureFieldTag(stringPicNumber).trim();
+		var pos = textcontent.indexOf(tagText);
+		while (pos >= 0)
+		{
+			textcontent = textcontent.replace(tagText,"");
+			pos = textcontent.indexOf(tagText);
+		}
+		txtarea.value = textcontent;
+	}
+	
+	function removePictureRow(stringPicNumber)
+	{
+		var maintable = document.getElementById("maintable");
+		var trId = getPicRowTag(stringPicNumber);
+		var rowAmount = maintable.rows.length;
+		var cnt = 0;
+		var seeking = true;
+		while (seeking && cnt < rowAmount)
+		{
+			var currentRow = maintable.rows[cnt];
+			if (currentRow.id == trId)
+			{
+				maintable.deleteRow(cnt);
+				seeking = false;
+			}
+			cnt++;
+		}
+	}
+	
+	function deletePicture(nmb)
+	{
+		var stringPicNumber = String(nmb);
+		delPictureTags(stringPicNumber);
+		removePictureRow(stringPicNumber);
+	}
+	
 	function onsubmitform()
 	{
 		return 0;
